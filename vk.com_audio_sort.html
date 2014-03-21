@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="./src/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" href="./src/bootstrap/css/bootstrap-responsive.css"/>
+
+    <script src="http://vk.com/js/api/xd_connection.js?2" type="text/javascript"></script>
+
+    <script src="./src/bootstrap/js/jquery.min.js"></script>
+    <script type="text/javascript" src="./src/bootstrap/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="./src/audio.js"></script>
+
+    <script src="http://img.creara-media.ru/js/v3/cmblockvk.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row" style="margin-top: 80px;">
+        <div class="offset3 span6">
+            <h3 class="page-header text-center">Сортировка музыки</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="offset3 span6">
+            <dl class="dl-horizontal form-horizontal text-center">
+                <dt>Песен в списке:</dt>
+                <dd id="order_all">...</dd>
+                <dt style="display: none; text-overflow: ellipsis;">Перемещается:</dt>
+                <dd style="display: none" id="order_from">...</dd>
+                <dt>Осталось перемещений:</dt>
+                <dd id="order_count">...</dd>
+                <dt style="display: none">Куда Перемещается:</dt>
+                <dd style="display: none" id="order_to">...</dd>
+            </dl>
+            <dl class="dl-horizontal form-horizontal text-center">
+                <dt>Статус:</dt>
+                <dd id="order_status">...</dd>
+            </dl>
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="offset3 span6">
+            <p>
+                <button onclick="window.audio.submit(); return false;" type="button" class="btn btn-block">
+                    Запустить сортировку
+                </button>
+            </p>
+        </div>
+    </div>
+    <div class="row" id="show_post" style="display: none;">
+        <div class="offset3 span6">
+            <hr>
+            <small>
+                Мы предоставляем доступ к нашему приложению бесплатно. Помогите нам набрать пользователей.
+                Пожалуйста, разместите у себя на стенке небольшую рекламу нашего приложения, это ведь не так много.
+            </small>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    var date = new Date();
+    VK.init(function () {
+        window.audio.check_post(function (result) {
+            if (result == -1) {
+                $('#show_post').show();
+            }
+        });
+
+        var cmBlock = new CMBlockVK;
+
+        cmBlock.setupPreroll(22746, {});
+    });
+</script>
+</html>
