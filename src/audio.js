@@ -235,8 +235,18 @@ window.audio.start_sort = function () {
     audio.get_all_audio(VK.id, function (items) {
 
         for (var key in items) {
-            items[key]['artist'] = items[key]['artist'].trim();
-            items[key]['title'] = items[key]['title'].trim();
+            items[key]['artist'] = items[key]['artist'].toLowerCase()
+                                                         .replace(/[\(].*[\)]/, ' ')
+                                                         .replace(/[^a-zа-я0-9 ]/, '')
+                                                         .replace(/^the/i, '')
+                                                         .replace(/\s{2,}/, ' ')
+                                                         .trim();
+            items[key]['title'] = items[key]['title'].toLowerCase()
+                                                       .replace(/[\(].*[\)]/, ' ')
+                                                       .replace(/[^a-zа-я0-9 ]/, '')
+                                                       .replace(/^the/i, '')
+                                                       .replace(/\s{2,}/, ' ')
+                                                       .trim();
         }
 
         var items_no_sort = audio.clone(items);
