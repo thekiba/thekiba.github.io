@@ -237,14 +237,14 @@ window.audio.start_sort = function () {
         for (var key in items) {
             items[key]['artist'] = items[key]['artist'].toLowerCase()
                                                          .replace(/\d+[.)]/, '')
-                                                         .replace(/[\(].*[\)]/, ' ')
+                                                         .replace(/[\[(].*[)\]]/, ' ')
                                                          .replace(/[^a-zа-я0-9 ]/, '')
                                                          .replace(/^the/i, '')
                                                          .replace(/\s{2,}/, ' ')
                                                          .trim();
             items[key]['title'] = items[key]['title'].toLowerCase()
                                                        .replace(/\d+[.)]/, '')
-                                                       .replace(/[(].*[)]/, ' ')
+                                                       .replace(/[\[(].*[)\]]/, ' ')
                                                        .replace(/[^a-zа-я0-9 ]/, '')
                                                        .replace(/^the/i, '')
                                                        .replace(/\s{2,}/, ' ')
